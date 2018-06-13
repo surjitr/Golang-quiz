@@ -20,6 +20,11 @@ var (
 	correct = 1
 )
 
+func exiting() {
+	fmt.Println("Quiz timed out exiting")
+	fmt.Println("Overall score :", correct, " out of ", 11)
+}
+
 func main() {
 
 	f, err := os.Open(filename)
@@ -36,6 +41,7 @@ func main() {
 	}
 
 	fmt.Println("Enter any key to start")
+	time.AfterFunc(30*time.Second, exiting)
 	var answer string
 	fmt.Scanf("%s \n", &answer)
 
